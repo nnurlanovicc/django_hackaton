@@ -33,14 +33,13 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', schema_view.with_ui('swagger')),
-    path('api/v1/', include('apps.account.urls')),
-    path('api/v1/', include('apps.post.urls')),
-    path('api/v1/', include('apps.category.urls')),
-    path('api/v1/', include('apps.tag.urls')),
+    path('api/', include('apps.account.urls')),
+    path('api/', include('apps.post.urls')),
+    path('api/', include('apps.category.urls')),
+    path('api/', include('apps.tag.urls')),
+    path('api/', include('apps.comment.urls')),
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
