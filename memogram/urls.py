@@ -37,10 +37,10 @@ urlpatterns = [
     path('api/', include('apps.post.urls')),
     path('api/', include('apps.category.urls')),
     path('api/', include('apps.tag.urls')),
+    path('api/', include('apps.comment.urls')),
+
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
