@@ -38,6 +38,7 @@ urlpatterns = [
     path('api/', include('apps.category.urls')),
     path('api/', include('apps.tag.urls')),
     path('api/', include('apps.comment.urls')),
+
 ]
 
 
