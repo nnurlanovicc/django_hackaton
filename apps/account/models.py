@@ -41,11 +41,11 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['name']
+    REQUIRED_FIELDS = ['email']
 
 
     def __str__(self):
-        return self.email
+        return self.username
     
 
     def has_module_perms(self, app_lable):

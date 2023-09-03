@@ -6,18 +6,27 @@ from apps.comment.models import Comment
 User = get_user_model()
 
 
-class Like(models.Model):
+class LikePost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+
 
     class Meta:
         unique_together = ['author', 'post'] 
-        constraints = [models.UniqueConstraint(fields=['author','comment'],name='unique_like_comment_author')]
 
     def __str__(self) -> str:
         return f'liked by: {self.author.username}'
 
+
+class LikeComment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ['author', 'comment']
+
+    def __str__(self) -> str:
+        return f'liked by: {self.author.username}'
 
 
 
