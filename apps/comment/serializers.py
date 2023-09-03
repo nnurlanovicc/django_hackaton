@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer,  ReadOnlyField
 from .models import Comment
-
+from apps.like.models import LikeComment
+from apps.like.serializers import LikeCommentSerializer
 
 class CommentSerializer(ModelSerializer):
     author = ReadOnlyField(source='author.username')
@@ -11,6 +12,11 @@ class CommentSerializer(ModelSerializer):
 
     def create(self, validated_data):
         request = self.context.get('request')
-        user = request.user
-        comment = Comment.objects.create(author=user, **validated_data)
+        comment = Comment.objects.create(**validated_data)
         return comment        
+
+
+    # def to_representation(self, instance):
+    #     representation = super().to_representation(instance)
+    #     representation['likes'] = LikeCommentSerializer(LikeComment.objects.filter(post=instance.pk), many=True).data
+    #     return representation

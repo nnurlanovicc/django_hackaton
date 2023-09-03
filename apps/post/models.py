@@ -5,6 +5,7 @@ from apps.category.models import Category
 from apps.tag.models import Tag
 
 
+
 User = get_user_model()
 
 class Post(models.Model):
